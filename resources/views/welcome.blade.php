@@ -7,12 +7,12 @@
 
         <title>Laravel</title>
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-        <script src="{{ asset('/js/font-awesome_5.15.3_js_all.js') }}" crossorigin="anonymous"></script>
+        <script src="{{ mix('/js/app.js') }}" defer></script>
+        <script src="{{ asset('/js/font-awesome_5.15.3_js_all.js') }}" defer></script>
     </head>
     <body class="sb-nav-fixed">
     <div id="app">
         <app></app>
     </div>
-    <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>

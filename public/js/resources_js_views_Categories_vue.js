@@ -2290,14 +2290,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Category",
+  names: "Categories",
   data: function data() {
     return {
       categoryData: {
         name: '',
-        image: ""
+        image: ''
       }
     };
   },
@@ -3383,7 +3385,7 @@ var render = function() {
                           _c("img", {
                             ref: "newCategoryImageDisplay",
                             staticClass: "img-thumbnail w-50",
-                            attrs: { src: "" }
+                            attrs: { src: "", alt: "" }
                           })
                         ])
                       : _vm._e(),
@@ -3391,11 +3393,7 @@ var render = function() {
                     _c("input", {
                       ref: "newCategoryImage",
                       staticClass: "form-control",
-                      attrs: {
-                        type: "file",
-                        id: "image",
-                        placeholder: "Enter name"
-                      },
+                      attrs: { type: "file", id: "image" },
                       on: { change: _vm.attachImage }
                     })
                   ]),

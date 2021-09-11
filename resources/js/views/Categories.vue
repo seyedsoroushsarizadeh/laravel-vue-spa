@@ -8,7 +8,8 @@
             <div class="card mb-4">
                 <div class="card-header d-flex">
                     <span><i class="fas fa-table me-1"></i>category manage</span>
-                    <button class="btn btn-success btn-sm ml-auto" @click="showCategoryModel">add new category <i class="fa fa-plus"></i></button>
+                    <button class="btn btn-success btn-sm ml-auto" @click="showCategoryModel">add new category <i
+                        class="fa fa-plus"></i></button>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -28,7 +29,6 @@
                             <td>
                                 <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
                                 <button class="btn danger btn-sm"><i class="fa fa-trash"></i></button>
-
                             </td>
                         </tr>
                         </tbody>
@@ -40,14 +40,16 @@
                     <form @submit.prevent="createCategory">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" v-model="categoryData.name" placeholder="Enter name">
+                            <input type="text" class="form-control" id="name" v-model="categoryData.name"
+                                   placeholder="Enter name">
                         </div>
                         <div class="form-group">
                             <label for="name">choose an image</label>
                             <div v-if="categoryData.image.name">
-                                <img src="" ref="newCategoryImageDisplay" class="img-thumbnail w-50" />
+                                <img src="" ref="newCategoryImageDisplay" class="img-thumbnail w-50" alt=""/>
                             </div>
-                            <input type="file" class="form-control" id="image" ref="newCategoryImage" v-on:change="attachImage" placeholder="Enter name">
+                            <input type="file" class="form-control" id="image" ref="newCategoryImage"
+                                   @change="attachImage">
                         </div>
                         <hr>
                         <button type="submit" class="btn btn btn-primary">save</button>
@@ -61,26 +63,27 @@
 
 <script>
 import * as categoryService from "../services/category_service";
+
 export default {
-    name: "Category",
-    data(){
-        return{
-            categoryData:{
-                name:'',
-                image:""
+    names: "Categories",
+    data() {
+        return {
+            categoryData: {
+                name: '',
+                image: ''
             }
         }
     },
-    methods:{
-        attachImage(){
+    methods: {
+        attachImage() {
             this.categoryData.image = this.$refs.newCategoryImage.files[0];
             let reader = new FileReader();
-            reader.addEventListener('load' , function (){
+            reader.addEventListener('load', function () {
                 this.$refs.newCategoryImageDisplay.src = reader.result;
-            }.bind(this) , false);
+            }.bind(this), false);
             reader.readAsDataURL(this.categoryData.image);
         },
-        createCategory : async function (){
+        createCategory: async function () {
             let formData = new FormData;
             formData.append('name', this.categoryData.name);
             formData.append('image', this.categoryData.image);
@@ -88,15 +91,14 @@ export default {
             try {
                 const response = await categoryService.createCategory(formData);
                 console.log(response);
-            }
-            catch (error){
+            } catch (error) {
                 console.log(error);
             }
         },
-        showCategoryModel(){
+        showCategoryModel() {
             this.$refs.NewCategoryModel.show();
         },
-        hideCategoryModel(){
+        hideCategoryModel() {
             this.$refs.NewCategoryModel.hide();
         }
     }
