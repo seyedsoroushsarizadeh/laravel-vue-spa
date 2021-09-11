@@ -7,8 +7,7 @@
 
         <title>Laravel</title>
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <script src="{{ asset('/js/font-awesome_5.15.3_js_all.js') }}" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
     <div id="app">
